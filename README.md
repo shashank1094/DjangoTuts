@@ -14,6 +14,7 @@ https://docs.djangoproject.com/en/2.0/misc/design-philosophies/#dry
 7. python manage.py check
 8. python manage.py shell
 9. python manage.py createsuperuser
+10. python manage.py test <app-name>
 
 
 ### When in interactive mode 
@@ -35,3 +36,30 @@ python manage.py shell
 13. q.choice_set.count()
 14. c = q.choice_set.filter(choice_text__startswith='Just hacking')
 15. c.delete()
+
+### Testing
+
+https://docs.djangoproject.com/en/2.0/intro/tutorial05/
+```python
+>>> from django.test.utils import setup_test_environment
+>>> setup_test_environment()
+>>> from django.test import Client
+>>> client = Client()
+>>> response = client.get('/')
+Not Found: /
+>>> # we should expect a 404 from that address; if you instead see an
+>>> # "Invalid HTTP_HOST header" error and a 400 response, you probably
+>>> # omitted the setup_test_environment() call described earlier.
+>>> response.status_code
+404
+>>> # on the other hand we should expect to find something at '/polls/'
+>>> # we'll use 'reverse()' rather than a hardcoded URL
+>>> from django.urls import reverse
+>>> response = client.get(reverse('polls:index'))
+>>> response.status_code
+200
+>>> response.content
+b'\n    <ul>\n    \n        <li><a href="/polls/1/">What&#39;s up?</a></li>\n    \n    </ul>\n\n'
+>>> response.context['latest_question_list']
+<QuerySet [<Question: What's up?>]>
+```
