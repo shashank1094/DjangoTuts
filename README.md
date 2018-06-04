@@ -5,16 +5,16 @@ Django is a free and open-source web framework, written in Python, which follows
 https://docs.djangoproject.com/en/2.0/misc/design-philosophies/#dry
 
 ## Cheat Sheet
-1. django-admin startproject <project-name>
+1. django-admin startproject project-name
 2. python manage.py runserver [ip : port]
-3. python manage.py startapp <app-name>
+3. python manage.py startapp app-name
 4. python manage.py migrate
-5. python manage.py makemigrations <app-name>
-6. python manage.py sqlmigrate <app-name> <migration-number>
+5. python manage.py makemigrations app-name
+6. python manage.py sqlmigrate app-name migration-number
 7. python manage.py check
 8. python manage.py shell
 9. python manage.py createsuperuser
-10. python manage.py test <app-name>
+10. python manage.py test app-name
 
 
 ### When in interactive mode 
