@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
 import datetime
+import os
+import mysite.settings as settings
 
 
 # Create your models here.
@@ -27,3 +29,19 @@ class Choice(models.Model):
 
     def __str__(self):
         return self.choice_text
+
+
+class ProfileImage(models.Model):
+    name = models.CharField(max_length=100)
+    file = models.ImageField(settings.MEDIA_ROOT)
+
+    def url(self):
+        # returns a URL for either internal stored or external image url
+        if self.externalURL:
+            return self.externalURL
+        else:
+            # is this the best way to do this??
+            return os.path.join('/', settings.MEDIA_URL, os.path.basename(str(self.image)))
+
+    def __str__(self):
+        return "{}".format(self.name)

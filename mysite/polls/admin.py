@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Question, Choice
+from .models import Question, Choice, ProfileImage
 
 
 # Register your models here.
@@ -26,7 +26,8 @@ class QuestionAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Question, QuestionAdmin)
-
+admin.site.register(Choice)
+admin.site.register(ProfileImage)
 # class QuestionAdmin(admin.ModelAdmin):
 #     fields = ['pub_date', 'question_text']
 #
