@@ -4,6 +4,7 @@ Django is a free and open-source web framework, written in Python, which follows
 ### Links
 1. [Meta inner class in Django models](https://stackoverflow.com/a/10344231)
 2. [select_related() vs prefetch_related()](https://stackoverflow.com/a/31237071)
+3. [Managing Concurrency in Django models](https://medium.com/@hakibenita/how-to-manage-concurrency-in-django-models-b240fed4ee2)
 
 ### Design philosophies
 https://docs.djangoproject.com/en/2.0/misc/design-philosophies/#dry
